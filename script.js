@@ -25,7 +25,9 @@ function userPrompts() {
   } else if (passwordLength > 128){
     alert('too long!')
     userPrompts()
-  } 
+  }
+
+  
 //prompt for less than 8 characters validation
 //prompts sc , lc, up, !, numbers
  
@@ -33,6 +35,8 @@ function userPrompts() {
   uppercase = confirm('Do you want uppercase?')
   lowercase = confirm('Do you want lowercase?')
   numbers = confirm('Do you want numbers?')
+
+
 
   if (specialCharacter===true){
     allPossilbeCharacters= allPossilbeCharacters.concat(possibleSpecial)
@@ -51,9 +55,11 @@ function userPrompts() {
   }
 }
 
+
+//how can i use return to get the result here
 function generatePassword(){
 
-  Math.random(possibleNumbers, possibleSpecial, possibleUppercase, possilbeLowercase)
+  Math.floor(Math.random * passwordLength)
 
 }
 
@@ -62,13 +68,14 @@ function generatePassword(){
 
 // Write password to the #password input
 
-//repalce password with the value of user prompts function
+//repalce password with the value password 
 function writePassword() {
   userPrompts()
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  return 
 
 }
 
