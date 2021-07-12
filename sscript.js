@@ -8,8 +8,8 @@ var specialCharacter
 var numbers
 
 
-const possibleSpecial = ['!','@','#','$','%','^','&','*']
-const possibleUppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+const possibleSpecial = ['!''@''#''$''%''^''&''*']
+const possibleUppercase = ['A''B''C''D''E''F''G''H''I''J''K''L''M''N''O''P''Q''R''S''T''U''V''W''X''Y''Z']
 const possilbeLowercase = ['a','b']
 const possibleNumbers = [1,2,3,4,5,]
 var allPossilbeCharacters = []
@@ -19,7 +19,6 @@ var allPossilbeCharacters = []
 // a function is function name and then ()
 function userPrompts() {
   passwordLength = prompt('How many characters? Must be between 8 and 128')
-  // defined function need to be stored it's in the var
   if (passwordLength < 8) {
     alert('too short!')
     userPrompts()
@@ -27,8 +26,7 @@ function userPrompts() {
     alert('too long!')
     userPrompts()
   }
-
-  
+ 
 //prompt for less than 8 characters validation
 //prompts sc , lc, up, !, numbers
  
@@ -58,7 +56,7 @@ function generatePassword() {
     allPossilbeCharacters = allPossilbeCharacters.concat(possibleNumbers)
   }
 
-  return allPossilbeCharacters
+  return allPossilbeCharacters[Math.floor(Math.random() * passwordLength)] 
 }
 
 

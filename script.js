@@ -26,9 +26,11 @@ function userPrompts() {
   } else if (passwordLength > 128){
     alert('too long!')
     userPrompts()
+  } else {
+    passwordLength
+    //for (passwordLength i = 0;i < passwordLength; i++ )
+    //store response in var password length
   }
-
-  
 //prompt for less than 8 characters validation
 //prompts sc , lc, up, !, numbers
  
@@ -58,7 +60,8 @@ function generatePassword() {
     allPossilbeCharacters = allPossilbeCharacters.concat(possibleNumbers)
   }
 
-  return allPossilbeCharacters
+  return Math.floor(Math.random(allPossilbeCharacters) * passwordLength) 
+
 }
 
 
