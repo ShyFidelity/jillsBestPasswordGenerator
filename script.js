@@ -8,11 +8,11 @@ var specialCharacter
 var numbers
 
 
-const possibleSpecial = ['!','@','#','$','%','^','&','*']
-const possibleUppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-const possilbeLowercase = ['a','b']
-const possibleNumbers = [1,2,3,4,5,]
-var allPossilbeCharacters = []
+let allSpecial = ['!','@','#','$','%','^','&','*']
+let allUppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+const allLowercase = ['a','b']
+const allNumbers = [1,2,3,4,5,6,7,8,9]
+var getAllCharacters = []
 
 
 //what length between 8 and 128
@@ -43,30 +43,38 @@ function userPrompts() {
 }
 
 function generatePassword() {
+  var getPassword = ''
+  
+  for (var i =0;i < passwordLength; i++ ){
 
-  if (specialCharacter===true){
-    allPossilbeCharacters= allPossilbeCharacters.concat(possibleSpecial)
+  if (specialCharacter===true)
+  {
+    getAllCharacters = getAllCharacters.concat(allSpecial)
   }
+  //need to to figure out how to pull random numbers from here 
 
   if (uppercase===true) {
-   allPossilbeCharacters=allPossilbeCharacters.concat(possibleUppercase)
+   getAllCharacters = getAllCharacters.concat(allUppercase)
   }
 
   if (lowercase===true) {
-    allPossilbeCharacters = allPossilbeCharacters.concat(possilbeLowercase)
+    getAllCharacters = getAllCharacters.concat(allLowercase)
   }
 
-  if (numbers===true) {
-    allPossilbeCharacters = allPossilbeCharacters.concat(possibleNumbers)
+ if (numbers===true) {
+    getAllCharacters = getAllCharacters.concat(allNumbers)
   }
+}
 
-  return Math.floor(Math.random(allPossilbeCharacters) * passwordLength) 
+  return getPassword
+
 
 }
 
 
 // //how can i use return to get the result here
-// function generatePassword(){
+// function generatePassword()
+//multiple their input times 
 
 //   Math.floor(Math.random * passwordLength)
 
