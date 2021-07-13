@@ -7,16 +7,14 @@ var lowercase
 var specialCharacter 
 var numbers
 
-
-let allSpecial = ['!','@','#','$','%','^','&','*']
-let allUppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-const allLowercase = ['a','b']
-const allNumbers = [1,2,3,4,5,6,7,8,9]
-var getAllCharacters = []
-
+//password prompt arrays
+var allSpecial = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
+var allUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var allLowercase = "abcdefghijklmnopqrstuvwxyz".split("");
+var allNumbers = "0123456789".split("");
+var password = []
 
 //what length between 8 and 128
-// a function is function name and then ()
 function userPrompts() {
   passwordLength = prompt('How many characters? Must be between 8 and 128')
   // defined function need to be stored it's in the var
@@ -28,48 +26,82 @@ function userPrompts() {
     userPrompts()
   } else {
     passwordLength
-    //for (passwordLength i = 0;i < passwordLength; i++ )
-    //store response in var password length
   }
-//prompt for less than 8 characters validation
+
 //prompts sc , lc, up, !, numbers
- 
   specialCharacter = confirm('Do you want special characters?') 
   uppercase = confirm('Do you want uppercase?')
   lowercase = confirm('Do you want lowercase?')
   numbers = confirm('Do you want numbers?')
-
+  passwordChoices = []
 
 }
 
 function generatePassword() {
-  var getPassword = ''
-  
-  for (var i =0;i < passwordLength; i++ ){
 
-  if (specialCharacter===true)
-  {
-    getAllCharacters = getAllCharacters.concat(allSpecial)
-  }
-  //need to to figure out how to pull random numbers from here 
+  if (specialCharacter === true) {
+    passwordChoices = passwordChoices.concat(specialCharacter);
+  }  
+  if (uppercase === true) {
+    passwordChoices = passwordChoices.concat(uppercase);
+  }  
+  if (lowercase === true) {
+    passwordChoices = passwordChoices.concat(lowercase);
+  }  
+  if (numbers === true) {
+    passwordChoices = passwordChoices.concat(numbers);
+  }  
 
-  if (uppercase===true) {
-   getAllCharacters = getAllCharacters.concat(allUppercase)
-  }
-
-  if (lowercase===true) {
-    getAllCharacters = getAllCharacters.concat(allLowercase)
-  }
-
- if (numbers===true) {
-    getAllCharacters = getAllCharacters.concat(allNumbers)
-  }
+  return passwordChoices
 }
 
-  return getPassword
+function writePassword() {
+  userPrompts()
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
+  passwordText.value = password;
+ 
 
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
+
+
+
+
+//  // for (var i =0;i < passwordLength; i++ )
+//  {
+
+//   if (specialCharacter===true)
+//   {
+//     getAllCharacters = getAllCharacters.concat(allSpecial)
+//   }
+//   //need to to figure out how to pull random numbers from here 
+
+//   if (uppercase===true) {
+//    getAllCharacters = getAllCharacters.concat(allUppercase)
+//   }
+
+//   if (lowercase===true) {
+//    getAllCharacters = getAllCharacters.concat(allLowercase)
+//   }
+
+//  if (numbers===true) {
+//   getAllCharacters = getAllCharacters.concat(allNumbers)
+//   }
+// }
+
+//   return getAllCharacters
+
+
+// }
 
 
 // //how can i use return to get the result here
@@ -86,18 +118,3 @@ function generatePassword() {
 // Write password to the #password input
 
 //replace password with the value password 
-function writePassword() {
-  userPrompts()
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
- 
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
-
