@@ -6,7 +6,7 @@ var allSpecial = "!@#%^&*?()<>/-+".split("");
 var allUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var allLowercase = "abcdefghijklmnopqrstuvwxyz".split("");
 var allNumbers = "0123456789".split("");
-
+console.log(allUppercase)
 //what length between 8 and 128
 function generatePassword() {
   passwordLength = prompt('How many characters? Must be between 8 and 128');
@@ -26,26 +26,38 @@ function generatePassword() {
   var uppercase = confirm('Do you want uppercase?')
   var lowercase = confirm('Do you want lowercase?')
   var numbers = confirm('Do you want numbers?')
+//all possible options 
   var passwordChoices = []
+//selected based on length  
+  var chosenCharacters = []
 
   if (specialCharacter) {
-    passwordChoices = (allSpecial.join(passwordChoices))
+    passwordChoices = passwordChoices.concat(allSpecial)
+    console.log(specialCharacter)
   }  
   if (uppercase) {
-    passwordChoices = passwordChoices.join(allUppercase);
-    console.log(passwordChoices);
+    passwordChoices = (passwordChoices.concat(allUppercase))
+    
   }  
   if (lowercase) {
-    passwordChoices = passwordChoices.join(allLowercase);
-    console.log(passwordChoices);
+    passwordChoices = (passwordChoices.concat(allLowercase))
+   
   }  
   if (numbers) {
-    passwordChoices = passwordChoices.join(allNumbers);
-    console.log(passwordChoices);
+    passwordChoices = (passwordChoices.concat(allNumbers))
+    
   }  
 
+  for (var i = 0; i < passwordLength; i++){
+    var loopChoice = passwordChoices[Math.floor(Math.random()*passwordChoices.length)]
+    chosenCharacters.push(loopChoice)
+  }
+
+ //removed commas but now only  1 character comes back!!! 
  //cannot figure out how to write a for loop to pull random numbers from selections 
-  return passwordChoices;
+chosenCharacters = chosenCharacters.join("")
+console.log(chosenCharacters)
+return chosenCharacters
 
 }
 
